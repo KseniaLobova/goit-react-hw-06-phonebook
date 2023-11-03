@@ -1,11 +1,15 @@
+import { useDispatch } from 'react-redux';
 import { WrapItem, Btn, TextItem } from './ContactItem.styled';
-export const ContactItem = ({ name, number, id, onDelete }) => {
+import { deleteContact } from 'reduce/contactsSlice';
+
+export const ContactItem = ({ name, number, id }) => {
+  const dispatch = useDispatch();
   return (
     <WrapItem>
       <TextItem>
         {name}: {number}
       </TextItem>
-      <Btn onClick={() => onDelete(id)}>Delete</Btn>
+      <Btn onClick={() => dispatch(deleteContact(id))}>Delete</Btn>
     </WrapItem>
   );
 };
